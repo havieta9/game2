@@ -36,9 +36,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "scripts": {
-    "build": "[my-framework] build --output public"
-  },
   "eslintConfig": {
     "extends": "react-app"
   },
