@@ -1,21 +1,48 @@
 {
-  "name": "axie",
-  "version": "0.0.0",
-  "description": "Axie",
-  "main": "server.js",
-  "author": {
-    "name": "Cesar Jaimes"
-  },
+  "name": "epic-nft-games",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "express": "^4.16.3",
-    "jquery": "^3.3.1",
-    "node": "^10.11.0",
-    "phaser": "^3.12.0",
-    "pixi-spine": "^1.5.16",
-    "pixi.js": "^4.8.2",
-    "react": "^16.5.2",
-    "request": "^2.88.0",
-    "server.js": "^1.0.0",
-    "socket.io": "^2.1.1"
+    "@openzeppelin/contracts": "^4.5.0",
+    "@testing-library/jest-dom": "^5.16.2",
+    "@testing-library/react": "^12.1.4",
+    "@testing-library/user-event": "^13.5.0",
+    "dotenv": "^16.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "5.0.0",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.5",
+    "@nomiclabs/hardhat-waffle": "^2.0.3",
+    "chai": "^4.3.6",
+    "ethereum-waffle": "^3.4.0",
+    "ethers": "^5.6.1",
+    "hardhat": "^2.9.1"
   }
 }
