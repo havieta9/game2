@@ -1,12 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'bootstrap/dist/css/bootstrap.css'
-import App from './components/app';
-import * as serviceWorker from './serviceWorker';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Navbar from "./Components/Navbar/Navbar"
+import Footer from "./Components/Footer/Footer"
+import MintPage from './Components/MintPage/MintPage';
+import App from './App';
+import "./index.css";
+import Market from './Components/Market/Market';
+import Dungeon from './Components/Dungeon/Dungeon';
 
-ReactDOM.render(<App />, document.getElementById('root'));
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(
+  <React.StrictMode>
+      <Router>
+    <Navbar />
+    <Routes>
+      <Route path="/" element={<App />} />
+      <Route path="/Tavern" element={<MintPage />} />
+      <Route path="/Market" element={<Market />} />
+      <Route path="/Dungeon" element={<Dungeon />} />
+    </Routes>
+    <Footer />
+  </Router>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+

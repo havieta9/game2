@@ -1,72 +1,46 @@
 {
-  "name": "cryptomon",
-  "version": "0.0.1",
-  "description": "NFT Crature Game",
-  "main": "index.js",
-  "scripts": {
-    "test": "truffle test",
-    "ganache": "ganache-cli --networkId $npm_package_config_ganache_networkId --allowUnlimitedContractSize --gasLimit $npm_package_config_ganache_gasLimit --gasPrice $npm_package_config_ganache_gasPrice",
-    "dev-setup": "concurrently \"npm run ganache\"   \"npm run migrate\" ",
-    "migrate": "rm -rf build && truffle migrate --reset --compile-all --network development",
-    "prettier": "prettier --write 'contracts/**/*.sol'",
-    "lint": "prettier --list-different 'contracts/**/*.sol'",
-    "truffle-console": "truffle console",
-    "client-start": "react-scripts start",
-    "client-build": "react-scripts build",
-    "client-test": "react-scripts test",
-    "client-eject": "react-scripts eject"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SpazCode/cryptomon.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/SpazCode/cryptomon/issues"
-  },
-  "homepage": "https://github.com/SpazCode/cryptomon#readme",
+  "name": "nftmarketplace",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "@openzeppelin/contracts": "^4.4.1",
-    "@svgdotjs/svg.js": "^3.1.1",
-    "babel-polyfill": "6.26.0",
-    "babel-preset-env": "1.7.0",
-    "babel-preset-es2015": "6.24.1",
-    "babel-preset-stage-2": "6.24.1",
-    "babel-preset-stage-3": "6.24.1",
-    "babel-register": "6.26.0",
-    "bootstrap": "4.3.1",
-    "chai": "4.2.0",
-    "chai-as-promised": "7.1.1",
-    "chai-bignumber": "3.0.0",
-    "react": "16.8.4",
-    "react-bootstrap": "1.0.0-beta.5",
-    "react-dom": "16.8.4",
-    "react-scripts": "2.1.3",
-    "web3": "1.0.0-beta.55"
+    "@craco/craco": "^6.4.3",
+    "@testing-library/jest-dom": "^5.16.2",
+    "@testing-library/react": "^12.1.4",
+    "@testing-library/user-event": "^13.5.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^6.2.2",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^2.1.4",
+    "web3": "^1.7.1"
   },
-  "config": {
-    "ganache": {
-      "networkId": 3777,
-      "gasLimit": 90000000,
-      "gasPrice": 300000000000
-    }
-  },
-  "devDependencies": {
-    "concurrently": "^6.5.1",
-    "ganache-cli": "^6.12.2",
-    "prettier": "^2.5.1",
-    "prettier-plugin-solidity": "^1.0.0-beta.19",
-    "truffle": "^5.4.26",
-    "truffle-flattener": "^1.4.2"
+  "scripts": {
+    "start": "craco start --openssl-legacy-provider start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.8.8",
+    "postcss": "^7.0.39",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17"
+  }
 }
