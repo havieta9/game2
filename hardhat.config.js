@@ -1,30 +1,73 @@
-require("@nomiclabs/hardhat-waffle");
-require('@nomiclabs/hardhat-waffle');
-require('dotenv').config();
+require("@nomiclabs/hardhat-ethers");
+require("@nomiclabs/hardhat-etherscan");
 
+const fs = require('fs');
+const privateKey = fs.readFileSync(".secret").toString().trim();
+const polygonScanApi = fs.readFileSync(".polygonScanApi").toString().trim();
+const moonScanApi = fs.readFileSync(".moonscanApi").toString().trim();
+const ALCHEMY_URL = fs.readFileSync(".alchemyUrl").toString().trim();
+const moralisNodes = require("./moralisNodes")
+const etherscanKeys = require("./etherscan")
+const AVAX_URL = fs.readFileSync(".avaxUrl").toString().trim();
 
-// This is a sample Hardhat task. To learn how to create your own go to
-// https://hardhat.org/guides/create-task.html
-task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
-  const accounts = await hre.ethers.getSigners();
-
-  for (const account of accounts) {
-    console.log(account.address);
-  }
-});
-
-// You need to export an object to set up your config
-// Go to https://hardhat.org/config/ to learn more
-
-/**
- * @type import('hardhat/config').HardhatUserConfig
- */
 module.exports = {
-  solidity: "0.8.4",
+  defaultNetwork: "matic",
   networks: {
-    rinkeby: {
-      url: process.env.STAGING_ALCHEMY_KEY,
-      accounts: [process.env.PRIVATE_KEY],
+    hardhat: {
+    },
+    mumbai: {
+      url: "https://rpc-mumbai.maticvigil.com",
+      accounts: [privateKey]
+    },
+    matic: {
+      url: ALCHEMY_URL,
+      accounts: [privateKey],
+    },
+    moonriver: {
+      url: "https://moonriver.api.onfinality.io/public",
+      accounts: [privateKey],
+    },
+    moonbeam: {
+      url: "https://rpc.api.moonbeam.network",
+      accounts: [privateKey],	
+    },
+    bsc: {
+      url: moralisNodes?.bscMainnet || "https://bsc-dataseed2.binance.org",
+      accounts: [privateKey],	
+    },
+    // bscTest: {
+    //   url: moralisNodes?.bscTestnet || "https://bsc-dataseed2.binance.org",
+    //   accounts: [privateKey],	
+    // },
+    avax: {
+      url: moralisNodes?.avaxMainnet || AVAX_URL,
+      accounts: [privateKey],	
+    },
+    ftm: {
+      url: moralisNodes?.ftmMainnet || "https://rpc2.fantom.network	",
+      accounts: [privateKey],	
+    },
+    boba_rinkeby: {
+      url: "https://rinkeby.boba.network",
+      accounts: [privateKey],
     },
   },
-};
+  etherscan: {
+    apiKey: {
+      moonriver: moonScanApi,
+      polygon: polygonScanApi,
+      bsc: etherscanKeys.bsc,
+      avalanche: etherscanKeys.avax,
+      opera: etherscanKeys.ftm,
+    }
+  },
+  solidity: {
+    version: "0.8.4",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200
+      }
+    }
+  }
+}
